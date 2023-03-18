@@ -67,3 +67,7 @@ public class Assesment {
 	
 
 }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
