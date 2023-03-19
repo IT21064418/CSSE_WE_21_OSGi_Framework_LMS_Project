@@ -32,7 +32,7 @@ public class SubscriberActivator implements BundleActivator {
 				lecturerservice.displayMenu();
 
 				int choice, indexNo, lecturer_id;
-				String lecturer_name, lecturer_email, lecturer_contactno;
+				String lec_name, lec_email, lec_contactno;
 
 				System.out.print("SELECT THE NO:");
 				choice = sc.nextInt();
@@ -50,15 +50,15 @@ public class SubscriberActivator implements BundleActivator {
 								System.out.println("Index No Already Exists");
 							} else {
 								System.out.print("Enter the Lecturer Name:");
-								lecturer_name = sc.next();
+								lec_name = sc.next();
 								System.out.print("Enter the email:");
-								lecturer_email = sc.next();
+								lec_email = sc.next();
 								sc.nextLine();
 								System.out.print("Enter the contact no:");
-								lecturer_contactno = sc.next();
+								lec_contactno = sc.next();
+								sc.nextLine();
 
-								lecturerservice.addLecturers(indexNo, lecturer_name, lecturer_email,
-										lecturer_contactno);
+								lecturerservice.addLecturers(indexNo, lec_name, lec_email, lec_contactno);
 								System.out.println("Successfully Completed");
 								System.out.println("---------------------------------");
 
@@ -67,6 +67,9 @@ public class SubscriberActivator implements BundleActivator {
 								if (input == 'N' || input == 'n') {
 									System.out.print("DO YOU WISH GO TO MAIN MENU:");
 									menuinput = sc.next().charAt(0);
+									if (menuinput == 'y'|| menuinput == 'Y') {
+										break;
+									}
 								}
 							}
 						}
@@ -85,7 +88,7 @@ public class SubscriberActivator implements BundleActivator {
 						menuinput = sc.next().charAt(0);
 						System.out.println("---------------------------------");
 					} else if (choice == 3) {
-						System.out.println("Enter the Student Index to delete: ");
+						System.out.println("Enter the Lecturer Index number to delete: ");
 						int index = sc.nextInt();
 						ArrayList<Lecturer> lecturerlist = lecturerservice.viewLecturers();
 						for (int i = 0; i < lecturerlist.size(); i++) {
@@ -111,7 +114,7 @@ public class SubscriberActivator implements BundleActivator {
 						menuinput = sc.next().charAt(0);
 						System.out.println("---------------------------------");
 					} else if (choice == 4) {
-						System.out.print("Enter the Index No:");
+						System.out.print("Enter the Lecturer Index number to update:");
 						indexNo = sc.nextInt();
 						lecturerservice.updateLecturerdetails(indexNo);
 						System.out.print("DO YOU WISH TO CONTINUE:");
@@ -119,9 +122,13 @@ public class SubscriberActivator implements BundleActivator {
 						System.out.print("DO YOU WISH GO TO MAIN MENU:");
 						menuinput = sc.next().charAt(0);
 						System.out.println("---------------------------------");
+						if (menuinput == 'y'|| menuinput == 'Y') {
+							break;
+						}
 
 					} else if (choice == 5) {
 						System.out.println("Thank You For Using Our LMS System");
+						
 					} else {
 						System.out.println("Invalid Selection Please Input");
 						System.out.print("DO YOU WISH GO TO MAIN MENU:");

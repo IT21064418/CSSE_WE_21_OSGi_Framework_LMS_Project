@@ -47,9 +47,9 @@ public class PublisherImpl implements Publisher{
 	@Override
 	public void displayMenu() {
 		
-		System.out.println("---MENU---");
+		System.out.println("\n---MENU---");
 		System.out.println("1. ADD Lecturer");
-		System.out.println("2. VIEW Lecturer");
+		System.out.println("2. VIEW Lecturers");
 		System.out.println("3. DELETE Lecturer");
 		System.out.println("4. UPDATE Lecturer");
 		System.out.println("5. Exit");
@@ -71,16 +71,17 @@ public class PublisherImpl implements Publisher{
     		    char delete = sc.next().charAt(0);
     		    if(delete=='Y' || delete=='y') {
 	  		          System.out.print("Enter the Lecturer Name: ");
-			          String lecturer_name = sc.next();
+			          String lec_name = sc.next();
 			          System.out.print("Enter the Lecturer email: ");
-			          String lecturer_email = sc.next();
+			          String lec_email = sc.next();
 			          sc.nextLine();
 			          System.out.print("Enter the contact no: ");
-			          String lecturer_contactno = sc.next();
+			          String lec_contactno = sc.next();
+			          sc.nextLine();
 			          
-			          lecturer.setLec_name(lecturer_name);
-					  lecturer.setLec_email(lecturer_email);
-					  lecturer.setLec_contactno(lecturer_contactno);
+			          lecturer.setLec_name(lec_name);
+					  lecturer.setLec_email(lec_email);
+					  lecturer.setLec_contactno(lec_contactno);
 	
     		    }
 			}
