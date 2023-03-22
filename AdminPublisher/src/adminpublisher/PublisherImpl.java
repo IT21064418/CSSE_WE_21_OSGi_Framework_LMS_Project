@@ -71,13 +71,12 @@ public class PublisherImpl implements Publisher{
     		    char delete = sc.next().charAt(0);
     		    if(delete=='Y' || delete=='y') {
 	  		          System.out.print("Enter the Lecturer Name: ");
-			          String lec_name = sc.next();
+			          String lec_name = sc.nextLine();
+			          lec_name = sc.nextLine();
 			          System.out.print("Enter the Lecturer email: ");
-			          String lec_email = sc.next();
-			          sc.nextLine();
+			          String lec_email = sc.nextLine();
 			          System.out.print("Enter the contact no: ");
-			          String lec_contactno = sc.next();
-			          sc.nextLine();
+			          String lec_contactno = sc.nextLine();
 			          
 			          lecturer.setLec_name(lec_name);
 					  lecturer.setLec_email(lec_email);

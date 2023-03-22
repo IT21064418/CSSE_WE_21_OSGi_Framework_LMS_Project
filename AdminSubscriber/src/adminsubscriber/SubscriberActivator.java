@@ -7,6 +7,7 @@ import org.osgi.framework.BundleActivator;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
+import org.osgi.framework.ServiceRegistration;
 
 import adminpublisher.Lecturer;
 import adminpublisher.Publisher;
@@ -15,17 +16,31 @@ import adminpublisher.PublisherImpl;
 public class SubscriberActivator implements BundleActivator {
 
 	private ServiceReference serviceReference;
+	private ServiceRegistration adminServiceReg;
+	private Publisher lecturerservice;
 
+	Scanner sc = new Scanner(System.in);
+	
 	public void start(BundleContext context) throws Exception {
-		Scanner sc = new Scanner(System.in);
+		
+		adminServiceReg = context.registerService(this.getClass().getName(), this, null);
+		serviceReference = context.getServiceReference(Publisher.class.getName());
+		lecturerservice = (Publisher) context.getService(serviceReference);
+		
+		System.out.println("Administrator system loaded");
+		lecturerservice.startService();
+		
+	}
 
-		System.out.println("LECTURER MANAGEMENT SYSTEM LOADED........\n");
-
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Administrator system ended.");
+		context.ungetService(serviceReference);
+	}
+	
+	public void displayMenu(){
+		
 		try {
-			serviceReference = context.getServiceReference(Publisher.class.getName());
-			Publisher lecturerservice = (Publisher) context.getService(serviceReference);
 
-			lecturerservice.startService();
 			char menuinput = 'X';
 			do {
 
@@ -50,13 +65,12 @@ public class SubscriberActivator implements BundleActivator {
 								System.out.println("Index No Already Exists");
 							} else {
 								System.out.print("Enter the Lecturer Name:");
-								lec_name = sc.next();
+								lec_name = sc.nextLine();
+								lec_name = sc.nextLine();
 								System.out.print("Enter the email:");
 								lec_email = sc.next();
-								sc.nextLine();
 								System.out.print("Enter the contact no:");
 								lec_contactno = sc.next();
-								sc.nextLine();
 
 								lecturerservice.addLecturers(indexNo, lec_name, lec_email, lec_contactno);
 								System.out.println("Successfully Completed");
@@ -141,11 +155,7 @@ public class SubscriberActivator implements BundleActivator {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-	}
-
-	public void stop(BundleContext context) throws Exception {
-		System.out.println("LECTURER SERVICE ENDED");
-		context.ungetService(serviceReference);
+		
 	}
 
 }
