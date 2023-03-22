@@ -3,14 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: AssesmentSubscriber
 Bundle-SymbolicName: AssesmentSubscriber
 Bundle-Version: 1.0.0.qualifier
-<<<<<<< Updated upstream
-Bundle-Activator: assesmentsubscriber.Activator
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Automatic-Module-Name: assesmentSubscriber
-Import-Package: assesmentpublisher,
- org.osgi.framework;version="1.3.0"
-Bundle-ActivationPolicy: lazy
-=======
 Bundle-Activator: assesmentsubscriber.AssmConsumerActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: AssesmentSubscriber
@@ -18,4 +10,3 @@ Import-Package: assesmentpublisher,
  org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: assesmentsubscriber
->>>>>>> Stashed changes

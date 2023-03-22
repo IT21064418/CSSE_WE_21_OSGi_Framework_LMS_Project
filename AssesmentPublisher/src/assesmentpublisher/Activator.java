@@ -5,17 +5,6 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
 public class Activator implements BundleActivator {
-<<<<<<< Updated upstream
-
-	private ServiceRegistration assesmentServiceRegistration;
-	private IAssesmentServices iAssesmentServices;
-
-	public void start(BundleContext context) throws Exception {
-		
-		System.out.println("Assesment publisher starting...");
-		iAssesmentServices = new AssesmentServiceImpl();
-		assesmentServiceRegistration = context.registerService(IAssesmentServices.class.getName(),iAssesmentServices, null);
-=======
 	
 	private static BundleContext context;
 	private ServiceRegistration assesmentServiceRegistration;
@@ -27,24 +16,19 @@ public class Activator implements BundleActivator {
 
 	public void start(BundleContext bundleContext) throws Exception {
 		
-		System.out.println("Assesment publisher starting...");
+		System.out.println("Assesment management services starting.....");
 		Activator.context = bundleContext;
-		
-		//look here if error
+
 		iAssesmentServices = new AssesmentServiceImpl();
 		assesmentServiceRegistration = bundleContext.registerService(IAssesmentServices.class.getName(),iAssesmentServices, null);
->>>>>>> Stashed changes
 		
 	}
 
 	public void stop(BundleContext context) throws Exception {
 		
-<<<<<<< Updated upstream
-=======
 		Activator.context = null;
 		
->>>>>>> Stashed changes
-		System.out.println("Assesment Publisher Stop");
+		System.out.println("Assesment management services ending.....");
 		assesmentServiceRegistration.unregister();
 		
 	}

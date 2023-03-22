@@ -24,13 +24,13 @@ public class AssmConsumerActivator implements BundleActivator {
 		asService = (IAssesmentServices) context.getService(assesmentServiceReference);
 
 		asService.startService();
-		System.out.println("Assesment subscriber starting...");
+		System.out.println("Assesment management system loaded.");
 		
 	}
 
 	public void stop(BundleContext context) throws Exception {
 		
-		System.out.println("Thank you for using the Assesment service console.");
+		System.out.println("Assesment management system ended.");
 		context.ungetService(assesmentServiceReference);
 		
 	}
@@ -47,6 +47,7 @@ public class AssmConsumerActivator implements BundleActivator {
 				asService.displayMenu();
 				System.out.print("Enter your choice: ");
 				int temp = sc.nextInt();
+				System.out.println("======================================\n");
 				
 				boolean choiceChk = false;
 				
@@ -68,6 +69,7 @@ public class AssmConsumerActivator implements BundleActivator {
 					asService.displayMenu();
 					System.out.print("Enter your choice: ");
 					temp = sc.nextInt();
+					System.out.println("======================================\n");
 					
 					if(temp >= 1 && temp <= 4) {
 						
@@ -108,16 +110,19 @@ public class AssmConsumerActivator implements BundleActivator {
 							if(status == 1) {
 								
 								System.out.println("Assesment added successfully");
+								System.out.println("\n======================================\n");
 								
 							}
 							else {
 								
 								System.out.println("Cannot add assesment. Try again.");
+								System.out.println("\n======================================\n");
 								
 							}
 							
 							System.out.print("Do you want add another assessment(Y/N): ");
 							String tempAssm = sc.next();
+							System.out.println("======================================\n");
 							
 							//initializing variables
 							boolean assmCon1,assmCon2,assmCon3 = false;
@@ -152,6 +157,7 @@ public class AssmConsumerActivator implements BundleActivator {
 								System.out.println("Invalid Input. Please input a valid Letter(Y/N)");
 								System.out.print("Do you need to continue (Y/N): ");
 								tempAssm = sc.next();
+								System.out.println("======================================\n");
 								
 								assmCon1 = tempAssm.equalsIgnoreCase("Y");
 								assmCon2 = tempAssm.equalsIgnoreCase("N");
@@ -189,48 +195,30 @@ public class AssmConsumerActivator implements BundleActivator {
 					
 					//execute viewAssesments function
 					case 2:					
-						ArrayList<Assesment> assesments = asService.viewAllAssesments();
-						
-						for (Assesment assesment : assesments) {
-							
-							System.out.println("Assesment Name: "+ assesment.getAssesmentName());
-							System.out.println("Assesment Description: "+ assesment.getAssesmentDisc());
-							System.out.println("Start Date: "+ assesment.getStartDate());
-							System.out.println("Deadline: "+ assesment.getDeadLine());
-							System.out.println("---------------------------------");
-							
-						}
+			
+						asService.viewAllAssesments();
 						
 						break;
 						
 					case 3:
-						ArrayList<Assesment> assesmentsList = asService.viewAllAssesments();
-						int count = 0;
 						
-						for (Assesment assesment : assesmentsList) {
-							
-							System.out.println("AssesmentIndex: "+ (count+1));
-							System.out.println("Assesment Name: "+ assesment.getAssesmentName());
-							System.out.println("Assesment Description: "+ assesment.getAssesmentDisc());
-							System.out.println("Start Date: "+ assesment.getStartDate());
-							System.out.println("Deadline: "+ assesment.getDeadLine());
-							System.out.println("---------------------------------");
-							count++;
-							
-						}
+						asService.viewAllAssesments();
 						
 						System.out.println("Enter the Assesment Index to delete: ");
 						int index = sc.nextInt();
+						System.out.println("======================================\n");
 						int delStatus = asService.removeAssesment(index);
 						
 						if(delStatus == 1) {
 							
 							System.out.println("Assesment deleted succesfully.");
+							System.out.println("\n======================================\n");
 							
 						}
 						else {
 							
 							System.out.println("Cannot delete assesment. Try again.");
+							System.out.println("\n======================================\n");
 							
 						}
 						
@@ -247,6 +235,7 @@ public class AssmConsumerActivator implements BundleActivator {
 				
 				System.out.print("Do you need to return to the menu(Y/N): ");
 				String tempString = sc.next();
+				System.out.println("======================================\n");
 				
 				//initializing variables
 				boolean con1,con2,con3 = false;
@@ -281,6 +270,7 @@ public class AssmConsumerActivator implements BundleActivator {
 					System.out.println("Invalid Input. Please input a valid Letter(Y/N)");
 					System.out.print("Do you need to continue (Y/N): ");
 					tempString = sc.next();
+					System.out.println("======================================\n");
 					
 					con1 = tempString.equalsIgnoreCase("Y");
 					con2 = tempString.equalsIgnoreCase("N");

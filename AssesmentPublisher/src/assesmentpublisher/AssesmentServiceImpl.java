@@ -9,7 +9,7 @@ public class AssesmentServiceImpl implements IAssesmentServices{
 	@Override
 	public void startService() {
 		
-		System.out.println("Assesment services Starting...");
+		System.out.println("Assesment management services Started.");
 		
 		Assesment assesment1 = new Assesment("write a blog on industry best practises of MERN",
 				"7-02-2023", "14-02-2023", "MERN best practises blog");
@@ -25,9 +25,21 @@ public class AssesmentServiceImpl implements IAssesmentServices{
 	}
 
 	@Override
-	public ArrayList<Assesment> viewAllAssesments() {
+	public void viewAllAssesments() {
 		
-		return assesmentsList;
+		int count = 0;
+		
+		for (Assesment assesment : assesmentsList) {
+			
+			System.out.println("AssesmentIndex: "+ (count+1));
+			System.out.println("Assesment Name: "+ assesment.getAssesmentName());
+			System.out.println("Assesment Description: "+ assesment.getAssesmentDisc());
+			System.out.println("Start Date: "+ assesment.getStartDate());
+			System.out.println("Deadline: "+ assesment.getDeadLine());
+			System.out.println("---------------------------------");
+			count++;
+			
+		}
 		
 	}
 
@@ -54,12 +66,14 @@ public class AssesmentServiceImpl implements IAssesmentServices{
 	@Override
 	public void displayMenu() {
 		
-		System.out.println("Welcome to assesment management menue");
+		System.out.println("======================================");
+		System.out.println("Welcome to assesment management menu");
+		System.out.println("======================================\n");
 		System.out.println("1. Add Assesments");
 		System.out.println("2. View Assesments");
 		System.out.println("3. Remove Assesments");
 		System.out.println("4. Quit");
-		System.out.println();
+		System.out.println("\n======================================\n");
 		
 	}
 
